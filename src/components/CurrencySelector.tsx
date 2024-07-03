@@ -42,9 +42,11 @@ const CurrencySelector: FC<ICurrencySelectorProps> = (props) => {
     return prepared.filter((option) => selectedCurrencies.includes(option.label.split(' - ')[0]));
   }, [prepared, selectedCurrencies]);
 
+
   return (
     <FormControl sx={classes.root}>
       <Autocomplete
+        data-testid="select"
         onChange={handleSelectedCurrenciesChange}
         multiple
         disablePortal

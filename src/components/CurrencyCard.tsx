@@ -9,7 +9,7 @@ interface ICurrencyCardProps {
 }
 
 const classes = {
-  currency: { 
+  currency: {
     marginLeft: '8px',
   },
   card: {
@@ -20,12 +20,10 @@ const classes = {
 const CurrencyCard: FC<ICurrencyCardProps> = (props) => {
   const { currency, onRemove } = props;
 
-  console.log(currency);
-
   const roundedPrice = currency.price.toFixed(4).replace('.', ',');
 
   return (
-    <Card sx={classes.card}>
+    <Card sx={classes.card} data-testid="card">
       <CardContent>
         <Grid container alignItems="center" spacing={2}>
           <Grid item>
@@ -38,11 +36,7 @@ const CurrencyCard: FC<ICurrencyCardProps> = (props) => {
             <Typography variant="h6" display="inline">
               {roundedPrice} ₽
             </Typography>
-            <Typography
-              display="inline"
-              color={currency.dayGainPercent >= 0 ? 'green' : 'red'}
-              sx={classes.currency}
-            >
+            <Typography display="inline" color={currency.dayGainPercent >= 0 ? 'green' : 'red'} sx={classes.currency}>
               {currency.dayGainPercent}%
             </Typography>
           </Grid>
